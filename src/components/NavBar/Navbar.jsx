@@ -14,7 +14,7 @@ const Navbar = () => {
                     <Nav.Item>
                         <Link to='/' style={{ textDecoration: 'none' }}>
                             <img
-                                src="../src/assets/descarga.jpeg" 
+                                src="./descarga.jpeg" 
                                 alt="Logo de la empresa"
                                 style={{
                                     height: '100px',
