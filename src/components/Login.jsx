@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 const Login = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isRegistering, setIsRegistering] = useState(false);
 
   const navigate = useNavigate();
 
@@ -45,28 +44,6 @@ const Login = ({ setIsAuthenticated }) => {
     }
   };
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post(
-        "https://673a3e44339a4ce44517aa5d.mockapi.io/stock/users",
-        { email, password }
-      );
-      setIsRegistering(false);
-      Swal.fire({
-        icon: "success",
-        title: "Usuario registrado",
-        text: "Ahora inicia sesión con tus credenciales.",
-      });
-    } catch (err) {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "No se pudo registrar el usuario.",
-      });
-    }
-  };
-
   return (
     <div
       style={{
@@ -74,7 +51,7 @@ const Login = ({ setIsAuthenticated }) => {
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
-        backgroundColor: "#212529", // Fondo rosado
+        backgroundColor: "#212529", // Fondo oscuro
         fontFamily: "Arial, sans-serif",
       }}
     >
@@ -88,9 +65,9 @@ const Login = ({ setIsAuthenticated }) => {
         }}
       >
         <h2 style={{ textAlign: "center", marginBottom: "20px", color: "#000" }}>
-          {isRegistering ? "Registrarse" : "Iniciar Sesión"}
+          Iniciar Sesión
         </h2>
-        <form onSubmit={isRegistering ? handleRegister : handleLogin}>
+        <form onSubmit={handleLogin}>
           <div style={{ marginBottom: "15px" }}>
             <label htmlFor="email" style={{ display: "block", marginBottom: "5px", color: "#000" }}>
               Correo electrónico
@@ -107,7 +84,6 @@ const Login = ({ setIsAuthenticated }) => {
                 border: "1px solid #ccc",
                 borderRadius: "4px",
                 color: "#000", // Texto negro
-                placeholderTextColor: "#aaa", // Placeholder gris
               }}
               placeholder="Ingresa tu correo"
             />
@@ -128,7 +104,6 @@ const Login = ({ setIsAuthenticated }) => {
                 border: "1px solid #ccc",
                 borderRadius: "4px",
                 color: "#000", // Texto negro
-                placeholderTextColor: "#aaa", // Placeholder gris
               }}
               placeholder="Ingresa tu contraseña"
             />
@@ -138,32 +113,16 @@ const Login = ({ setIsAuthenticated }) => {
             style={{
               width: "100%",
               padding: "10px",
-              backgroundColor: "#4caf50", // Botón rojo
+              backgroundColor: "#4caf50", // Botón verde
               color: "#fff",
               border: "none",
               borderRadius: "4px",
               cursor: "pointer",
             }}
           >
-            {isRegistering ? "Registrarse" : "Iniciar Sesión"}
+            Iniciar Sesión
           </button>
         </form>
-        <button
-          style={{
-            marginTop: "10px",
-            display: "block",
-            background: "none",
-            border: "none",
-            color: "#007bff",
-            cursor: "pointer",
-            textAlign: "center",
-          }}
-          onClick={() => setIsRegistering(!isRegistering)}
-        >
-          {isRegistering
-            ? "¿Ya tienes cuenta? Inicia sesión"
-            : "¿No tienes cuenta? Regístrate"}
-        </button>
       </div>
     </div>
   );
