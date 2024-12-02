@@ -19,7 +19,7 @@ const Home = () => {
 
     setLoading(true);
     try {
-      const genAI = new GoogleGenerativeAI("AIzaSyC5yxu38TqKhUXHRsJyb-dmPzsm5COBVL4"); // Asegúrate de que la clave esté en .env
+      const genAI = new GoogleGenerativeAI("");
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
       // Si hay un archivo cargado, se usa el contenido para generar la respuesta
