@@ -13,7 +13,7 @@ const Login = ({ setIsAuthenticated }) => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        "https://673a3e44339a4ce44517aa5d.mockapi.io/stock/users"
+        ""
       );
       const user = data.find(
         (user) => user.email === email && user.password === password
